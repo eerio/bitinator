@@ -1,7 +1,11 @@
 RewriteEngine On
+RewriteBase /
 
-RewriteCond %{REQUEST_URI} !^/robots\.txt$ [NC]
-RewriteCond %{HTTP_HOST} !^www\.[a-z-]+\.[a-z]{2,6} [NC]
-RewriteCond %{HTTP_HOST} ([a-z-]+\.[a-z]{2,6})$   [NC]
-RewriteRule ^/(.*)$ http://%1/$1 [R=301,L]
+# Require www subdomain
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\.bitinator\.net$ [NC]
+RewriteRule ^/(.*)$ http://www.bitinator.net/$1 [R=301,L]
 
+# Require SSL
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
