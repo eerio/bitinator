@@ -1,5 +1,11 @@
 RewriteEngine On
 
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} =on
+RewriteRule ^(.*)$ - [env=protocol:https]
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ - [env=protocol:http]
+
+RewriteCond %{HTTPS} !www.bitinator.net$ [NC]
+RewriteRule ^(.*)$ ${ENV:protocol}://www.bitinator.net/$1 [L,R=301]
 
