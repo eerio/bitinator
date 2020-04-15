@@ -1,5 +1,3 @@
 RewriteEngine On
-
-# Require SSL
-RewriteCond %{HTTPS} !=on [NC]
-RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
