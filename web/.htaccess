@@ -2,6 +2,7 @@
 # canonical: https://www.
 <IfModule mod_rewrite.c>
 	RewriteEngine On
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https
 	RewriteCond %{HTTPS} off [OR]
 	RewriteCond %{HTTP_HOST} !^www\. [NC]
 	RewriteCond %{HTTP_HOST} ^(.*)$ [NC]
