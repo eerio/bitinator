@@ -3,7 +3,7 @@
     <title>PHP Test</title>
   </head>
   <body>
-  <?php echo '<p>Hello, Krzysztof!</p>'; ?>
+  <?php echo $_SERVER['HTTP_HOST']; ?>
   </body>
 </html>
 
