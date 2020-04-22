@@ -3,7 +3,7 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
-	RewriteCond %{HTTPS} on [AND]
+	RewriteCond %{HTTPS} on
 	RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net$ [NC]
 	RewriteRule (.*) https://%{HTTP_HOST}{REQUEST_URI} [L]
 
