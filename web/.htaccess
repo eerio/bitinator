@@ -3,17 +3,17 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
-	RewriteCond %{HTTPS} on [AND]
-	RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net$ [NC]
-	RewriteRule (.*) $1 [L]
+	#RewriteCond %{HTTPS} on [AND]
+	#RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net$ [NC]
+	#RewriteRule (.*) $1 [L]
 
-	RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
-	RewriteCond %{HTTPS} off
-	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+	#RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
+	#RewriteCond %{HTTPS} off
+	#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
-	RewriteCond %{HTTP_HOST} !\w+\.bitinator\.net [NC]
-	RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
+	#RewriteCond %{HTTP_HOST} !\w+\.bitinator\.net [NC]
+	#RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
 
-	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
+	#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
 </IfModule>
 
