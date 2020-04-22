@@ -15,6 +15,6 @@
 	RewriteCond %{HTTP_HOST} !\w+\.bitinator\.net [NC]
 	RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
 
-	RewriteRule (.*) https://%{HTTP_HOST}%REQUEST_URI} [L,R=303]
+	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
 </IfModule>
 
