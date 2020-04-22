@@ -3,8 +3,8 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
-	RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
-	RewriteCond %{HTTPS} on
+	RewriteCond %{HTTP:X-Forwarded-Proto} https
+	#RewriteCond %{HTTPS} on
 	RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net$ [NC]
 	RewriteRule (.*) https://mfo3.pl [L,R=303]
 
