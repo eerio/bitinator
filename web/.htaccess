@@ -1,20 +1,16 @@
-
 # canonical: https://www.
 <IfModule mod_rewrite.c>
-	RewriteEngine On
+        RewriteEngine On
 
-	RewriteCond %{HTTP:X-Forwarded-Proto} https
-	#RewriteCond %{HTTPS} on
-	RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net$ [NC]
-	RewriteRule (.*) $1 [L]
+        RewriteCond %{SERVER_PORT} 443
+        RewriteCond %{HTTP_HOST} ^(www|todo) [NC]
+        RewriteRule (.*) $1 [L]
 
-	RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
-	RewriteCond %{HTTPS} off
-	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+        RewriteCond %{SERVER_PORT} 80
+        RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
 
-	RewriteCond %{HTTP_HOST} !\w+\.bitinator\.net [NC]
-	RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
+        RewriteCond %{HTTP_HOST} ^bitinator\.net [NC]
+        RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
 
-	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
+        RewriteRule (.*) $1 [L,R=303]
 </IfModule>
-
