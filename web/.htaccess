@@ -7,13 +7,13 @@
         RewriteCond %{HTTP_HOST} ^(www|todo) [NC]
         RewriteRule (.*) $1 [L]
 
-        RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
-        RewriteCond %{HTTP:X-Forwarded-Proto} =""
-        RewriteCond %{HTTPS} !=on
-        RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
+        #RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+        #RewriteCond %{HTTP:X-Forwarded-Proto} =""
+        #RewriteCond %{HTTPS} !=on
+        #RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
 
-        RewriteCond %{HTTP_HOST} ^bitinator\.net [NC]
-        RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
+        #RewriteCond %{HTTP_HOST} ^bitinator\.net [NC]
+        #RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI}
 
-        RewriteRule (.*) $1 [L,R=303]
+        #RewriteRule (.*) $1 [L,R=303]
 </IfModule>
