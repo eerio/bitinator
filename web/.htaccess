@@ -5,15 +5,19 @@
         RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
         RewriteCond %{HTTPS} on
         RewriteCond %{HTTP_HOST} ^(www|todo) [NC]
-        RewriteRule (.*) $1 [L]
+        #RewriteRule (.*) $1 [L]
+	RewriteRule (.*) http://mfo2.pl/1
 
         RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
         RewriteCond %{HTTP:X-Forwarded-Proto} =""
         RewriteCond %{HTTPS} !=on
-        RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
+        #RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
+	RewriteRule (.*) http://mfo2.pl/2
 
         RewriteCond %{HTTP_HOST} ^bitinator\.net [NC]
-        RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI}
+        #RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI}
+	RewriteRule (.*) http://mfo2.pl/3
 
-        RewriteRule (.*) $1 [L,R=303]
+        #RewriteRule (.*) $1 [L,R=303]
+	RewriteRule (.*) http://mfo2.pl/4
 </IfModule>
