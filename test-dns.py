@@ -20,8 +20,8 @@ def ok():print('passed!')
 def test(to_check, should_fail, is_red=False, out_url=''):
     msg(to_check, is_red, out_url)
 
-    for dummy in ('', 'a/', 'a/b/', 'a/b/c.html'):
-    #for dummy in ('',):
+    #for dummy in ('', 'a/', 'a/b/', 'a/b/c.html'):
+    for dummy in ('',):
         print('real url checked:', to_check + dummy)
         if should_fail:
             try:
