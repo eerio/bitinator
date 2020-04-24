@@ -1,8 +1,6 @@
 # canonical: https://www.
 <IfModule mod_rewrite.c>
         RewriteEngine On
-	RewriteBase /
-	LogLevel warn rewrite:trace8
 
         RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
         RewriteCond %{HTTPS} on
