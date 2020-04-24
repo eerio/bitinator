@@ -19,5 +19,5 @@
 	#RewriteRule (.*) http://mfo2.pl/3
 
         #RewriteRule (.*) $1 [L,R=303]
-	RewriteRule (.*) http://mfo2.pl/a="$1"
+	RewriteRule (.*) http://mfo2.pl/$1 [L,R=303]
 </IfModule>
