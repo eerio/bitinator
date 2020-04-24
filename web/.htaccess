@@ -1,6 +1,7 @@
 # canonical: https://www.
 <IfModule mod_rewrite.c>
         RewriteEngine On
+	RewriteBase /
 
         RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
         RewriteCond %{HTTPS} on
