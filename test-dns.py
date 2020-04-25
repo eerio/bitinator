@@ -17,11 +17,11 @@ def msg(check, n, out):print(check, 'expected: %d redirect(s), output url: %s...
 def ok():print('passed!')
 
 
-def test(to_check, should_fail, is_red=False, out_url=''):
+def test(to_check, should_fail, n_red=False, out_url=''):
     msg(to_check, is_red, out_url)
 
-    #for dummy in ('', 'a/', 'a/b/', 'a/b/c.html'):
-    for dummy in ('',):
+    for dummy in ('', 'a/', 'a/b/', 'a/b/c.html', 'a/b/c.php?x=17&foo=placki'):
+    #for dummy in ('',):
         print('real url checked:', to_check + dummy)
         if should_fail:
             try:
@@ -34,15 +34,15 @@ def test(to_check, should_fail, is_red=False, out_url=''):
             resp = get(to_check + dummy)
 
         
-        #if len(resp.history) != int(is_red):
-        #    raise AssertionError(str(resp.history), resp.url, 'wrong n of redirects')
-        #if is_red: assert resp.history[0].status_code == R
+        if len(resp.history) != n_red:
+            raise AssertionError(str(resp.history), resp.url, 'wrong n of redirects')
+        if n_red: assert all(h.status_code == R for h in resp.history)
         if resp.url != out_url + dummy:
             raise AssertionError(resp.url, '!=', out_url + dummy)
         ok()
 
 typical = https + www + base
-test(http+base, False, 1, typical)
+test(http+base, False, 2, typical)
 test(https+base, False, 1, typical)
 test(http+www+base, False, 1, typical)
 test(https+www+base, False, 0, typical)
