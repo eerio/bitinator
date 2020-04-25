@@ -5,7 +5,7 @@
         RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
         RewriteCond %{HTTPS} on
         RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net.* [NC]
-        RewriteRule (.*) $1 [L]
+        RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,END]
 
         RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
         RewriteCond %{HTTP:X-Forwarded-Proto} =""
