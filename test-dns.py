@@ -1,5 +1,6 @@
 #!/bin/python3
 from requests import get
+from requests.exceptions import ConnectionError
 
 base = 'bitinator.net/'
 http = 'http://'
@@ -8,22 +9,14 @@ sub = 'pawel.'  # non-existent subdomain
 pat = 'agawa'  # non-existent path
 www = 'www.'
 tod = 'todo.'
+dummy = 'a/b/c.php'
+
+R = 303
+
+def msg(check, n, out):print(check, 'expected: %d redirect(s), output url: %s...' % (n, out))
+def ok():print('passed!')
 
 
-for schema in (http, https):
-    # base --303--> https+www+base
-    resp = get(schema + base)
-    assert len(resp.history) == 1
-    assert resp.history[0].status_code == 303
-    assert resp.url == https + www + base
-
-# http+www+base --303--> https
-resp = get(http + www + base)
-assert len(resp.history) == 1
-assert resp.history[0].status_code == 303
-assert resp.url == https + www + base
-
-<<<<<<< HEAD
 def test(to_check, should_fail, is_red=False, out_url=''):
     msg(to_check, is_red, out_url)
 
@@ -57,10 +50,4 @@ test(http+tod+base, False, 1, https+tod+base)
 test(https+tod+base, False, 0, https+tod+base)
 test(http+sub+base, True)
 test(https+sub+base, True)
-=======
-# https+www+base --> https+www+base
-resp = get(https + www + base)
-assert len(resp.history) == 0
-assert resp.url == https + www + base
->>>>>>> test
 
