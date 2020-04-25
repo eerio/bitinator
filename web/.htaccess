@@ -2,14 +2,11 @@
 <IfModule mod_rewrite.c>
         RewriteEngine On
 
-        RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
-        RewriteCond %{HTTPS} on
+        RewriteCond %{HTTP:X-Forwarded-Proto} https
         RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net.* [NC]
         RewriteRule (.*) $1 [L]
 
         RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
-        RewriteCond %{HTTP:X-Forwarded-Proto} =""
-        RewriteCond %{HTTPS} !=on
         RewriteRule (.*) https://\.$1 [N]
 
         RewriteCond %{HTTP_HOST} ^bitinator\.net.* [NC]
