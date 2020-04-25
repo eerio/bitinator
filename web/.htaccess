@@ -7,10 +7,10 @@
         # RewriteRule (.*) $1 [L]
 
         RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
-        RewriteRule (.*) https://.$1 [L,R=303]
+        RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
 
         RewriteCond %{HTTP_HOST} ^bitinator\.net.* [NC]
-        RewriteRule (.*) https://www.$1 [L,R=303]
+        RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=303]
 
         # RewriteRule ^ https://mfo2.pl/%{HTTP_HOST} [L,R=303]
 </IfModule>
