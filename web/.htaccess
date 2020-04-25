@@ -2,15 +2,15 @@
 <IfModule mod_rewrite.c>
         RewriteEngine On
 
-        RewriteCond %{HTTP:X-Forwarded-Proto} https
-        RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net.* [NC]
-        RewriteRule (.*) $1 [L]
+        # RewriteCond %{HTTP:X-Forwarded-Proto} https
+        # RewriteCond %{HTTP_HOST} ^\w+\.bitinator\.net.* [NC]
+        # RewriteRule (.*) $1 [L]
 
         RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
-        RewriteRule (.*) https://\.$1 [N]
+        RewriteRule (.*) https://\.$1 [L,R=303]
 
         RewriteCond %{HTTP_HOST} ^bitinator\.net.* [NC]
-        RewriteRule (.*) https://www\.$1 [N]
+        RewriteRule (.*) https://www\.$1 [L,R=303]
 
-        RewriteRule ^ https://mfo2.pl/%{HTTP_HOST} [R=303,L]
+        # RewriteRule ^ https://mfo2.pl/%{HTTP_HOST} [L,R=303]
 </IfModule>
