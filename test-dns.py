@@ -18,7 +18,7 @@ def ok():print('passed!')
 
 
 def test(to_check, should_fail, n_red=False, out_url=''):
-    msg(to_check, is_red, out_url)
+    msg(to_check, n_red, out_url)
 
     for dummy in ('', 'a/', 'a/b/', 'a/b/c.html', 'a/b/c.php?x=17&foo=placki'):
     #for dummy in ('',):
